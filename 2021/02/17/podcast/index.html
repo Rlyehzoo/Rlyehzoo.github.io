@@ -298,7 +298,9 @@
           perPage: 10,
           pagerDirection: 'last',
           createIssueManually: false,
-          distractionFreeMode: false
+          distractionFreeMode: false,
+          proxy: '{{ theme.gitalk.proxy }}',
+
         });
         gitalk.render('gitalk-container');
       });
