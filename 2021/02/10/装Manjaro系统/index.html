@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      589 字
+      1k 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      7
+      12
        分钟
     </span>
   
@@ -290,9 +290,17 @@
 <li><p>迁移系统</p>
 <blockquote>
 <ul>
-<li>按前述步骤在新电脑上划分分区安装Manjaro系统</li>
-<li>在原有系统中，通过<code>dd</code>命令将<code>/</code>目录下的东西备份</li>
-<li>在新电脑上livecd启动，在livecd系统中，利用<code>rsync</code>同步，其中<code>boot, proc, sys</code>无限v同步</li>
+<li><p>按前述步骤在新电脑上划分分区安装Manjaro系统</p>
+</li>
+<li><p>在原有系统中，通过<code>dd</code>命令将<code>/</code>目录下的东西备份</p>
+</li>
+<li><p>在新电脑上livecd启动，在livecd系统中，利用<code>rsync</code>同步，其中<code>boot, proc, sys</code>无需同步</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2020/08/rsync.html">rsync 用法教程 - 阮一峰的网络日志</a></p>
+<p>迁移时，复制源文件flag为<code>-av</code></p>
+<p>迁移时，粘贴到目标文件flag为<code>-av --delete</code></p>
+</blockquote>
+</li>
 </ul>
 </blockquote>
 </li>
@@ -327,6 +335,61 @@
 <p><code>Ctrl+Alt+F2</code>切换到命令行登录后，删除<code>/etc/X11/xorg.conf.d/20-video.conf</code>中的内容并输入<code>reboot</code>重启</p>
 </blockquote>
 </li>
+<li><p>碰到过一次内核恐慌，原因是aur在安装过程中发现了循环依赖，暂时把<code>/bin, /lib, /lib64</code>重命名到了<code>/bin.old, /lib.old, /lib64.old</code>导致系统找不到<code>/etc/init</code>，可以通过livecd登录后将相应链接重命名</p>
+</li>
+<li><p>自动挂载，修改<code>/etc/fstab</code>，将所需的分区添加进去</p>
+</li>
+<li><p>出现了打开vscode后桌面上鼠标点击失灵的情况，不知道咋回事，好像是某一个进程导致整个桌面被占用了，重新安装了一次vscode就好了</p>
+</li>
+<li><p>同步网络时间</p>
+<blockquote>
+<p><code>sudo timedatectl set-ntp true</code></p>
+</blockquote>
+</li>
+<li><p>注意文件复制到<code>ntfs</code>中会导致权限改变，进行任何同步操作时避免涉及<code>ntfs</code>文件系统，挂载操作可以参考<a target="_blank" rel="noopener" href="https://blog.idejie.com/2019/09/24/mount-linux-ntfs-disk/">Linux挂载NTFS盘爬坑 | idejie</a></p>
+</li>
+<li><p>权限同步：写了脚本如下，递归同步两文件夹下相同文件（夹）名的权限，拯救了误更改/etc权限导致的内核恐慌</p>
+<details>
+    <summary> modify_permission.sh</summary>
+    <pre><code>#!/bin/bash
+dir1=/run/temp/etc
+dir2=/etc
+function get () 
+&#123;
+        if [[ -d $1 && -d $2 ]]; then
+                chmod --reference=$1 $2
+                for fa in $1/*; do
+                        for fb in $2/*; do
+                                name1=$&#123;fa##*/&#125;
+                                name2=$&#123;fb##*/&#125;
+                                if [[ -d $fa && $name1 == $name2 ]]; then
+                                        chmod --reference=$fa $fb
+                                        get $fa $fb
+                                elif [[ -f $fa && $name1 == $name2 ]]; then
+                                        echo $fa
+                                        echo $fb
+                                        chmod --reference=$fa $fb
+                                fi
+                        done
+                done
+        fi
+&#125;
+get $dir1 $dir2
+</code></pre>
+</details>
+</li>
+<li><p>备份系统：可以参照<a target="_blank" rel="noopener" href="https://officeguide.cc/rsync-incremental-backups-hard-link-snapshots-tutorial-examples/">使用 rsync 進行增量備份、建立檔案快照教學與範例 - Office 指南</a>，可我还没太用利索，脚本之后补，暂时卸载其余硬盘后，用<code>dd</code>直接复制整个盘</p>
+<details>
+    <summary>backup.sh</summary>
+    <pre><code>to be continued
+</code></pre>
+</details>
+
+
+
+
+
+</li>
 </ol>
 
             </div>
@@ -351,6 +414,12 @@
                   <article class="post-prev col-6">
                     
                     
+                      <a href="/2021/02/17/podcast/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Podcastを始めましょう！ 珍道具屋</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
                   </article>
                   <article class="post-next col-6">
                     
@@ -366,6 +435,38 @@
               
             </div>
 
+            
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                
+  <div id="gitalk-container"></div>
+  <script type="text/javascript">
+    Fluid.utils.waitElementVisible('gitalk-container', function() {
+      Fluid.utils.createCssLink('/css/gitalk.css')
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/gitalk@1.7.0/dist/gitalk.min.js', function () {
+        var gitalk = new Gitalk({
+          clientID: '91bb95c3bb781883fe14',
+          clientSecret: 'bb41c97ee608720000b3ad3b8617a0406578de4a',
+          repo: 'Comments',
+          owner: 'Rlyehzoo',
+          admin: ["Rlyehzoo"],
+          id: '607fa9c2460a056a6f05503637c5d3e3',
+          language: 'zh-CN',
+          labels: ["Gitalk"],
+          perPage: 10,
+          pagerDirection: 'last',
+          createIssueManually: false,
+          distractionFreeMode: false
+        });
+        gitalk.render('gitalk-container');
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
             
           </article>
         </div>

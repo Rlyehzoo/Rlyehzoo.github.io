@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.4k 字
+      1.3k 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      18
+      15
        分钟
     </span>
   
@@ -324,102 +324,104 @@
 </li>
 </ul>
 <h2 id="我的VS-Code配置"><a href="#我的VS-Code配置" class="headerlink" title="我的VS Code配置"></a>我的VS Code配置</h2><ul>
-<li><p>分为工具<code>tools</code>和配置编译链<code>recipes</code>两部分（未完成，随时修改）<br>`<br>  “latex-workshop.latex.tools”: [</p>
-<pre><code>  &#123;
-  // 编译工具和命令
-  &quot;name&quot;: &quot;xelatex&quot;,
-  &quot;command&quot;: &quot;xelatex&quot;,
-  &quot;args&quot;: [
-  &quot;-synctex=1&quot;,
-  &quot;-interaction=nonstopmode&quot;,
-  &quot;-file-line-error&quot;,
-  &quot;-pdf&quot;,
-  &quot;%DOCFILE%&quot;
-  ]
-  &#125;,
-
-  &#123;
-  &quot;name&quot;: &quot;pdflatex&quot;,
-  &quot;command&quot;: &quot;pdflatex&quot;,
-  &quot;args&quot;: [
-  &quot;-synctex=1&quot;,
-  &quot;-interaction=nonstopmode&quot;,
-  &quot;-file-line-error&quot;,
-  &quot;%DOCFILE%&quot;
-  ]
-  &#125;,
-
-  &#123;
-  &quot;name&quot;: &quot;bibtex&quot;,
-  &quot;command&quot;: &quot;bibtex&quot;,
-  &quot;args&quot;: [
-  &quot;%DOCFILE%&quot;
-  ]
-  &#125;,
-
-  &#123;
-  &quot;name&quot;: &quot;latexmk_zju&quot;,
-  &quot;command&quot;: &quot;latexmk&quot;,
-  &quot;args&quot;: [
-  &quot;-xelatex&quot;,
-  &quot;-outdir=out&quot;
-  ]
+<li><p>分为工具<code>tools</code>和配置编译链<code>recipes</code>两部分（未完成，随时修改）</p>
+  <details>
+      <summary>tools and recipres</summary>
+      <pre><code>"latex-workshop.latex.tools": [
+      &#123;
+      // 编译工具和命令
+      "name": "xelatex",
+      "command": "xelatex",
+      "args": [
+      "-synctex=1",
+      "-interaction=nonstopmode",
+      "-file-line-error",
+      "-pdf",
+      "%DOCFILE%"
+      ]
+      &#125;,
+      &#123;
+      "name": "pdflatex",
+      "command": "pdflatex",
+      "args": [
+      "-synctex=1",
+      "-interaction=nonstopmode",
+      "-file-line-error",
+      "%DOCFILE%"
+      ]
+      &#125;,
+      &#123;
+      "name": "bibtex",
+      "command": "bibtex",
+      "args": [
+      "%DOCFILE%"
+      ]
+      &#125;,
+      &#123;
+      "name": "latexmk_zju",
+      "command": "latexmk",
+      "args": [
+      "-xelatex",
+      "-outdir=out"
+      ]
   &#125;
-  ],
-</code></pre><p>  “latex-workshop.latex.recipes”: [</p>
+      ],
+"latex-workshop.latex.recipes": [
+      &#123;
+      "name": "zjuthesis",
+      "tools": [
+      "latexmk_zju"
+      ]
+      &#125;,
+      &#123;
+      "name": "xelatex",
+      "tools": [
+      "xelatex"
+      ]
+      &#125;,
+      &#123;
+      "name": "xe->bib->xe->xe",
+      "tools": [
+      "xelatex",
+      "bibtex",
+      "xelatex",
+      "xelatex"
+      ]
+      &#125;,
+      &#123;
+      "name": "Compile Rnw files",
+      "tools": [
+      "rnw2tex",
+      "latexmk"
+      ]
+      &#125;,
+      &#123;
+      "name": "Compile Jnw files",
+      "tools": [
+      "jnw2tex",
+      "latexmk"
+      ]
+      &#125;,
+      &#123;
+      "name": "tectonic",
+      "tools": [
+      "tectonic"
+      ]
+      &#125;
+      ],
+      "latex-workshop.latex.outDir": "%DIR%/out",
+      "latex-workshop.view.pdf.viewer": "tab"
+      </code>
+      </pre>
+  </details>
+
+
+
+
+
+
 </li>
 </ul>
-<pre><code>    &#123;
-    &quot;name&quot;: &quot;zjuthesis&quot;,
-    &quot;tools&quot;: [
-    &quot;latexmk_zju&quot;
-    ]
-    &#125;,
-
-    &#123;
-    &quot;name&quot;: &quot;xelatex&quot;,
-    &quot;tools&quot;: [
-    &quot;xelatex&quot;
-    ]
-    &#125;,
-
-    &#123;
-    &quot;name&quot;: &quot;xe-&gt;bib-&gt;xe-&gt;xe&quot;,
-    &quot;tools&quot;: [
-    &quot;xelatex&quot;,
-    &quot;bibtex&quot;,
-    &quot;xelatex&quot;,
-    &quot;xelatex&quot;
-    ]
-    &#125;,
-
-    &#123;
-    &quot;name&quot;: &quot;Compile Rnw files&quot;,
-    &quot;tools&quot;: [
-    &quot;rnw2tex&quot;,
-    &quot;latexmk&quot;
-    ]
-    &#125;,
-
-    &#123;
-    &quot;name&quot;: &quot;Compile Jnw files&quot;,
-    &quot;tools&quot;: [
-    &quot;jnw2tex&quot;,
-    &quot;latexmk&quot;
-    ]
-    &#125;,
-
-    &#123;
-    &quot;name&quot;: &quot;tectonic&quot;,
-    &quot;tools&quot;: [
-    &quot;tectonic&quot;
-    ]
-    &#125;
-
-    ],
-    &quot;latex-workshop.latex.outDir&quot;: &quot;%DIR%/out&quot;,
-    &quot;latex-workshop.view.pdf.viewer&quot;: &quot;tab&quot;
-</code></pre><p>  `</p>
 <h2 id="论文写作"><a href="#论文写作" class="headerlink" title="论文写作"></a>论文写作</h2><ul>
 <li><a target="_blank" rel="noopener" href="https://thenetadmin.github.io/zjuthesis/">浙江大学学位论文 LaTeX 模板 | zjuthesis</a></li>
 <li><a target="_blank" rel="noopener" href="https://sspai.com/post/60844">使用 Git+LaTeX 完成你的毕业设计 - 少数派</a></li>
@@ -480,6 +482,38 @@
               
             </div>
 
+            
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                
+  <div id="gitalk-container"></div>
+  <script type="text/javascript">
+    Fluid.utils.waitElementVisible('gitalk-container', function() {
+      Fluid.utils.createCssLink('/css/gitalk.css')
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/gitalk@1.7.0/dist/gitalk.min.js', function () {
+        var gitalk = new Gitalk({
+          clientID: '91bb95c3bb781883fe14',
+          clientSecret: 'bb41c97ee608720000b3ad3b8617a0406578de4a',
+          repo: 'Comments',
+          owner: 'Rlyehzoo',
+          admin: ["Rlyehzoo"],
+          id: 'adbf8106eaa504acaf415199d5e8ae0f',
+          language: 'zh-CN',
+          labels: ["Gitalk"],
+          perPage: 10,
+          pagerDirection: 'last',
+          createIssueManually: false,
+          distractionFreeMode: false
+        });
+        gitalk.render('gitalk-container');
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
             
           </article>
         </div>
