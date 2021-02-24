@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="Rlyehzoo">
   <meta name="keywords" content="">
-  <title>test - ネギの惑星</title>
+  <title>从零开始学搭网站 - ネギの惑星</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -166,7 +166,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="test">
+            <span class="h2" id="subtitle" title="从零开始学搭网站">
               
             </span>
 
@@ -188,7 +188,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      858 字
+      1.1k 字
     </span>
   
 
@@ -198,7 +198,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      12
+      15
        分钟
     </span>
   
@@ -228,10 +228,10 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">test</h1>
+            <h1 style="display: none">从零开始学搭网站</h1>
             
             <div class="markdown-body">
-              <p><strong>测试部署网站需要的各种插件，以供参照</strong></p>
+              <p><strong>测试部署网站踩过的坑，以供参照，真找不到工作了我就仔细学学当前端去</strong></p>
 <h2 id="代码高亮"><a href="#代码高亮" class="headerlink" title="代码高亮"></a>代码高亮</h2><ul>
 <li>和Markdown语法相同</li>
 </ul>
@@ -256,7 +256,7 @@
 </ul>
 <blockquote>
 
-    <div id="aplayer-vpwzDQhP" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="7862539210" data-server="tencent" data-type="playlist" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
+    <div id="aplayer-XRbipkXe" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="7862539210" data-server="tencent" data-type="playlist" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
 </blockquote>
 <figure class="highlight clojure"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs clojure">&#123;% meting <span class="hljs-string">&quot;7862539210&quot;</span> <span class="hljs-string">&quot;tencent&quot;</span> <span class="hljs-string">&quot;playlist&quot;</span> %&#125;<br></code></pre></td></tr></table></figure>
 <ul>
@@ -264,7 +264,7 @@
 </ul>
 <blockquote>
 
-    <div id="aplayer-PoaNdktO" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="004351Vk3uwOhB" data-server="tencent" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
+    <div id="aplayer-SXULPnxV" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="004351Vk3uwOhB" data-server="tencent" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
 </blockquote>
 <figure class="highlight clojure"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs clojure">&#123;% meting <span class="hljs-string">&quot;004351Vk3uwOhB&quot;</span> <span class="hljs-string">&quot;tencent&quot;</span> <span class="hljs-string">&quot;song&quot;</span> %&#125;<br></code></pre></td></tr></table></figure>
 <blockquote>
@@ -333,6 +333,27 @@
 </li>
 <li><p><code>clean</code>后重新<code>generate</code>再<code>deploy</code>出去就好了</p>
 </li>
+</ul>
+<h2 id="自定义域名"><a href="#自定义域名" class="headerlink" title="自定义域名"></a>自定义域名</h2><ul>
+<li><p>在<a target="_blank" rel="noopener" href="https://www.domcomp.com/">domcomp</a>可以选择哪个网站买域名比较便宜</p>
+</li>
+<li><p>买一个自己的域名，比如我是在<a target="_blank" rel="noopener" href="http://www.alldomains.com/">Alldomains</a>买的，域名是<code>rlyehzoo.xyz</code></p>
+</li>
+<li><p>查看<a target="_blank" rel="noopener" href="https://docs.github.com/cn/github/working-with-github-pages/managing-a-custom-domain-for-your-github-pages-site">管理GitHub Pages 站点的自定义域- GitHub Docs</a>得到自定义域的ip地址，比如目前是</p>
+<figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs accesslog"><span class="hljs-number">185.199.108.153</span><br><span class="hljs-number">185.199.109.153</span><br><span class="hljs-number">185.199.110.153</span><br><span class="hljs-number">185.199.111.153</span><br></code></pre></td></tr></table></figure></li>
+<li><p>在购买域名的网站中配置DNS：创建四个条目，使用二级域名的话，名称填<code>@</code>，否则填子域名字；选择<code>A</code>记录；ip分别填上述查询得到的四个ip</p>
+</li>
+<li><p>在网页仓库的<code>Settings</code>里<code>Custom domain</code>处填入域名，这会在仓库里生成一个<code>CNAME</code>文件，并稍后勾选<code>Enforce HTTPS</code>确保<code>https</code>连接</p>
+</li>
+<li><p>在本地的<code>source</code>中添加相同的<code>CNAME</code>文件</p>
+</li>
+<li><p>在<code>_config.yml</code>的<code>skip_render:</code>填入<code>CNAME</code></p>
+</li>
+<li><p>假如提示不安全，需要稍等证书同步好后即恢复</p>
+</li>
+</ul>
+<h2 id="CDN服务"><a href="#CDN服务" class="headerlink" title="CDN服务"></a>CDN服务</h2><ul>
+<li>用的<a target="_blank" rel="noopener" href="https://www.cloudflare.com/">cloudfare</a>的免费服务，只需要在域名注册的机构更改<code>nameserver</code>为cloudfare提供的即可</li>
 </ul>
 <h2 id="常见报错"><a href="#常见报错" class="headerlink" title="常见报错"></a>常见报错</h2><ol>
 <li><p>ValidationError: ‘null’ is not a string!</p>
