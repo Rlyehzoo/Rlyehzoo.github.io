@@ -4,7 +4,14 @@
   <url>
     <loc>https://rlyehzoo.xyz/2021/02/17/ep-1-my-funny-valentine/</loc>
     
-    <lastmod>2021-03-05</lastmod>
+    <lastmod>2021-03-07</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://rlyehzoo.xyz/2021/02/05/test/</loc>
+    
+    <lastmod>2021-03-07</lastmod>
     
   </url>
   
@@ -19,13 +26,6 @@
     <loc>https://rlyehzoo.xyz/about/index.html</loc>
     
     <lastmod>2021-03-01</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://rlyehzoo.xyz/2021/02/05/test/</loc>
-    
-    <lastmod>2021-02-28</lastmod>
     
   </url>
   
@@ -46,7 +46,7 @@
 
   <url>
     <loc>https://rlyehzoo.xyz/</loc>
-    <lastmod>2021-03-05</lastmod>
+    <lastmod>2021-03-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -56,21 +56,21 @@
   
   <url>
     <loc>https://rlyehzoo.xyz/categories/%E5%8B%89%E5%BC%B7/</loc>
-    <lastmod>2021-03-05</lastmod>
+    <lastmod>2021-03-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://rlyehzoo.xyz/categories/%E9%81%93%E5%85%B7/</loc>
-    <lastmod>2021-03-05</lastmod>
+    <lastmod>2021-03-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://rlyehzoo.xyz/categories/podcast/</loc>
-    <lastmod>2021-03-05</lastmod>
+    <lastmod>2021-03-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
